@@ -1,16 +1,16 @@
-import { ApplicationCommandInteraction, CommandStructure, createInteractionResponse, InteractionResponseTypes } from "../deps.ts"
+import { ApplicationCommandInteraction, CommandStructure, InteractionResponse, InteractionResponseTypes } from "../deps.ts"
 
 export const ping:CommandStructure = {
     command: {
         name: "ping",
         description: "send pong!!",
     },
-    execute: async (interaction:ApplicationCommandInteraction) => {
-        await createInteractionResponse(interaction, {
+    execute: (interaction:ApplicationCommandInteraction):InteractionResponse => {
+        return {
             type: InteractionResponseTypes.ChannelMessageWithSource,
             data: {
                 content: "pong"
             }
-        })
+        }
     }
 }
